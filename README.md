@@ -56,7 +56,6 @@ El éxito de este hiperparámetro se evidenció directamente en la curva de pér
 ## 📈 4. Métricas de Rendimiento (Testing - 20%)
 * **Precisión final (Accuracy) en la data de test:** 99.67%
 * **Pérdida final (Loss) en la data de test:** 0.1115
-*(Inserte aquí abajo la captura de pantalla de la gráfica de entrenamiento Accuracy/Loss de su modelo)*
 ![Gráfica de Entrenamiento](src/grafica_rendimiento.png)
 
 ---
