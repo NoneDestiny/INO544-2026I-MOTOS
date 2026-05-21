@@ -1,7 +1,7 @@
 import tensorflow as tf
 import os
 
-# --- FASE 1: DIVISION Y PREPROCESAMIENTO DE IMáGENES"
+# --- FASE 1: Division de los datos y preparación de las imágenes ---"
 # 1. Esta es la direccion o la carpeta que tiene que buscar para ubicar las 2 subcarpetas
 DIRECTORIO_DATOS = os.path.join ("datasets", "dataset_final")
 
@@ -40,7 +40,7 @@ nombres_clases = train_dataset.class_names
 
 print(f"\n Categorias detectadas automaticamente: {nombres_clases}")
 
-# --- FASE 2: INVOCANDO A MOBILENET Y CONSTRUYENDO LA RED ---
+# --- FASE 2: Construcción de la red ---
 
 # 1. La Puerta de Entrada (Directriz del Profesor)
 # Definimos el tamaño exacto y el nombre que pidió en la pizarra
@@ -84,7 +84,7 @@ modelo.compile(
 print("\n Arquitectura de la Red Neuronal Finalizada:")
 modelo.summary()
 
-# --- FASE 3: EL ENTRENAMIENTO ---
+# --- FASE 3: Entrenamiento ---
 
 # 1. Definiendo los ciclos de estudio. Siendo Epocas ("Epoch") el ciclo de revision de todo el conjunto de datos existentes.
 # En cada ciclo nos dará los resultados obtenidos para ver el error de estudio de las imágenes de training, las del testing

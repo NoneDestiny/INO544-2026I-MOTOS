@@ -23,7 +23,7 @@ directorio_actual = os.path.dirname(os.path.abspath(__file__))
 # Devolverse en las carpetas.
 ruta_dataset = os.path.abspath(os.path.join(directorio_actual, "..", "datasets", "dataset_final", "dataset_no_motos"))
 
-print("--- INICIANDO AUDITORÍA DEL DATASET ---")
+print("--- Cargando Dataset... Auditoria en proceso ---")
 print(f"Buscando imágenes en: {ruta_dataset}\n")
 
 # 3. Ahora usamos nuestra la ruta para el bucle de verificación
@@ -61,4 +61,4 @@ for nombre_archivo in lista_archivos:
     except Exception as e:
         print(f"[{nombre_archivo}] -> Archivo corrupto o no es imagen.")
 
-print("\n--- AUDITORÍA FINALIZADA ---")
+print("\n--- El cargado de Dataset ha finalizado ---")

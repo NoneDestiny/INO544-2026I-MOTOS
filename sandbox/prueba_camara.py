@@ -4,7 +4,7 @@ import tensorflow as tf
 
 # 1. De este pequeño script se llama al modelo entrenado.
 print("Cargando modelo...")
-modelo = tf.keras.models.load_model('../modelo_motos_IUJO.keras') # Ajusta la ruta si no estás en la carpeta pruebas/
+modelo = tf.keras.models.load_model('modelo_motos_IUJO.keras') 
 print("Modelo cargado con éxito.")
 
 # 2. Se enciende la camara web. El valor "0" es para usar la camara integrada.
@@ -30,13 +30,14 @@ while True:
     img_array = np.expand_dims(img_rgb, axis=0)
     
     # d. Se aplica el traductor de pixeles especificos que trabaja MobileNetV2. Osea, -1 a 1.
-    img_lista = tf.keras.applications.mobilenet_v2.preprocess_input(img_array)
+    # img_lista = tf.keras.applications.mobilenet_v2.preprocess_input(img_array)
+    # img_lista = img_array / 255.0
 
     # --- REALIZACION DE PREDICCIÓN ---
-    prediccion = modelo.predict(img_lista, verbose=0)[0][0] # Extraemos el número exacto
+    prediccion = modelo.predict(img_array, verbose=0)[0][0] # Extraemos el número exacto
     
     # --- INTERPRETACION DEL RESULTADO ---
-    # Aqui dividimos el porcentaje en 50/50. Por lo que a partir de">= 0.5" será nuestra respuesta positiva de que 
+    # Aqui dividimos el porcentaje en 50/50. Por lo que a partir de">= 0.5" será nuestra respuesta positiva de que
     # la IA si confirma que es una moto.
     if prediccion >= 0.5:
         # Recordar que .2f es para decimales.
@@ -54,7 +55,7 @@ while True:
     # Abre una ventana para la transmisión de la cámara en vivo.
     cv2.imshow('Detector de Motos en Vivo', frame)
 
-    # Usaremos "q" para acabar con el ciclo y poder salir del programa,
+    # Usaremos "q" para acabar con el ciclo y poder salir del programa,Q
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 

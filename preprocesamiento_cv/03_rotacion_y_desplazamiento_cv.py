@@ -10,13 +10,13 @@ ruta_imagen = os.path.join(directorio_script, "dataset_motos", "moto_481.jpg")
 imagen_original = cv2.imread(ruta_imagen)
 
 if imagen_original is None:
-    print("Error, OpenCV no encontró la ruta correcta o el nombre de la imagen solicitada")
+    print("Error 404 la aplicación no ha encontrado la imagen. Por favor revisa la ruta o el nombre del archivo.")
 else:
     angulo_azar = random.uniform(20, -20)
     zoom_azar = random.uniform(0.8, 1.2)
     mov_x = random.uniform(-22, 22)
     mov_y = random.uniform(-22, 22)
-    print(f"Imagen cargada. Aplicando Rotacion aleatoria de {angulo_azar:.2f}, Zoom aleatoria de {zoom_azar:.2}. Ademas un desplazamiento de X: {mov_x:.0f} | Y: {mov_y:.0f}")
+    print(f"Imagen cargada con éxito. Se aplicarán los valores aleatorios:Rotacion aleatoria de {angulo_azar:.2f}, Zoom aleatoria de {zoom_azar:.2}. Ademas un desplazamiento de X: {mov_x:.0f} | Y: {mov_y:.0f}")
 
 
     # 1. Calculamos el centro exacto de la imagen (mitad de ancho y mitad de alto)

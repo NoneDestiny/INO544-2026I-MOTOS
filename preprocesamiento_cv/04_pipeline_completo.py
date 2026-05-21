@@ -13,7 +13,7 @@ ruta_imagen = os.path.join(directorio_script, "dataset_motos", "moto_494.jpg")
 imagen_original = cv2.imread(ruta_imagen)
 
 if imagen_original is None:
-    print(f"Lo lamentamos, OpenCV no logró encontrar la ruta de la imagen, por lo que es incorrecta o la imagen no existe. Por favor, verificar.")
+    print("Error 404 la aplicación no ha encontrado la imagen. Por favor revisa la ruta o el nombre del archivo.")
 else:
     angulo_azar = random.uniform(20, -20)
     alpha_azar = random.uniform (0.2, 1.8)

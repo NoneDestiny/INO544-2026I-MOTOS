@@ -13,9 +13,9 @@ imagen_original = cv2.imread(ruta_imagen)
 
 #2 Esto hace que OpenCV confirme si de verdad la imagen solicitada existe o encontró algo.
 if imagen_original is None:
-    print("❌ ERROR CATASTRÓFICO: OpenCV no encontró la imagen. Revisa el nombre o la ruta.")
+    print("Error 404 la aplicación no ha encontrado la imagen. Por favor revisa la ruta o el nombre del archivo.")
 else:
-    print("✅ Imagen cargada exitosamente. Aplicando Data Augmentation...")
+    print("La imagen ha sido cargada con éxito. Se aplicará Data Augmentation...")
 
     # 2. Aplicar el Volteo Horizontal.
     # En OpenCV, el comando es flip. El número 1 significa "voltear en el eje Y (horizontalmente)".
