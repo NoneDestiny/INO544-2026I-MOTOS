@@ -324,10 +324,16 @@ class DetectorMotosApp(ctk.CTk):
         if not file_path:
             return
 
-        img_bgr = cv2.imread(file_path)
+        # Usar numpy y cv2.imdecode para soportar rutas con tildes, eñes o caracteres especiales en Windows
+        try:
+            img_array = np.fromfile(file_path, dtype=np.uint8)
+            img_bgr = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        except Exception:
+            img_bgr = None
+
         if img_bgr is None:
             self.label_res_imagen.configure(text="Error al cargar la imagen", text_color=COLOR_ROJO)
-            self.label_prob_imagen.configure(text="Verifica que el archivo sea válido", text_color=COLOR_TEXTO_SUB)
+            self.label_prob_imagen.configure(text="Verifica que el archivo sea válido o no esté corrupto", text_color=COLOR_TEXTO_SUB)
             return
 
         texto, porcentaje, color = self.evaluar_imagen(img_bgr)
