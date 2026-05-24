@@ -49,7 +49,8 @@ class DetectorMotosApp(ctk.CTk):
         self.label_probabilidad = ctk.CTkLabel(
             self.frame_resultado, 
             text="", 
-            font=ctk.CTkFont(size=18, text_color="gray")
+            font=ctk.CTkFont(size=18),
+            text_color="gray"
         )
         self.label_probabilidad.pack(pady=5)
         
