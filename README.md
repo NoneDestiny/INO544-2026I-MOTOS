@@ -107,13 +107,13 @@ Para mantener el código limpio y la documentación detallada, el manual técnic
 
 #### 📁 Fase 2: Preprocesamiento y Aumento de Datos (Data Augmentation)
 * **[01. Módulo de data](docs/01_preprocesamiento.md):** Pruebas geométricas unitarias utilizando el método `cv2.flip` de OpenCV para mitigar el sobreajuste mediante variaciones espejo en el eje Y.
-* **[02. Ajuste Lumínico de Brillo y Contraste](docs/02_ajuste.md):** Modificación del espacio de píxeles mediante escalados lineales (`cv2.convertScaleAbs`), robusteciendo el modelo frente a fluctuaciones ambientales de luz.
+* **[02. Ajuste Lumínico de Brillo y Contraste](docs/02_ajustes.md):** Modificación del espacio de píxeles mediante escalados lineales (`cv2.convertScaleAbs`), robusteciendo el modelo frente a fluctuaciones ambientales de luz.
 * **[03. Transformaciones Afines Aleatorias](docs/03_aleatoriedad.md):** Inyección de variabilidad estocástica en el lienzo cartesiano mediante cálculos dinámicos de rotación, zooms y traslaciones.
 * **[04. Pipeline Unificado y Procesamiento por Lotes](docs/04_procesamientos_lote.md):** Lógica del motor de producción masiva (`04_pipeline_completo.py` y `05_procesamiento_lote.py`) que combinó todas las mutaciones mediante un bucle anidado para expandir el dataset a más de 3,000 muestras.
 
 #### 📁 Fase 3: Core de Inteligencia Artificial y Entrenamiento
 * **[05. Fase 2 y 3: Configuración, Arquitectura y Entrenamiento del modelo](docs/05_entrenamiento.md):** Flujo de carga por lotes (`batch_size=32`), instanciación del modelo congelado *MobileNetV2* (Transfer Learning) y análisis de la función de pérdida por entropía cruzada binaria.
-* **[06. Optimización y Exportación a Formato ONNX](docs/06_exportacion_del_modelo.md):** pipeline de compilación e interoperabilidad (`exportacion_onnx.py`) para migrar la red de Keras hacia un formato universal de alto rendimiento en producción.
+* **[06. Optimización y Exportación a Formato ONNX](docs/06_exportado_del_modelo.md):** pipeline de compilación e interoperabilidad (`exportacion_onnx.py`) para migrar la red de Keras hacia un formato universal de alto rendimiento en producción.
 
 #### 📁 Fase 4: Evaluación e Inferencia en Producción
 * **[07. Evaluación del Rendimiento Gráfico](docs/07_resultados.md):** Análisis estadístico y visual de las curvas históricas de precisión (*Accuracy*) y pérdida (*Loss*) exportadas en alta fidelidad (300 DPI).
