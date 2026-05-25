@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import os
 
-# 1. Los datos exactos que rescatamos de tu entrenamiento de la madrugada
+#Datos de entrenamiento y validación (Datos obtenidos del entrenamiento en Entrenamiento.py)
 epocas = range(1, 11)
 acc = [0.9374, 0.9933, 0.9969, 0.9979, 0.9985, 0.9996, 0.9998, 0.9998, 1.0000, 1.0000]
 loss = [0.1837, 0.0412, 0.0243, 0.0167, 0.0122, 0.0095, 0.0076, 0.0064, 0.0053, 0.0045]
@@ -41,4 +41,4 @@ plt.tight_layout()
 plt.savefig(ruta_guardado, dpi=300)
 
 print(f"¡Éxito! Gráfica generada y guardada en: {ruta_guardado}")
-plt.show() # Esto también abrirá una ventana para que la veas al instante
+plt.show() # Esto también abrirá una ventana con la gráfica para verla directamente.

@@ -62,3 +62,4 @@ for nombre_archivo in lista_archivos:
         print(f"[{nombre_archivo}] -> Archivo corrupto o no es imagen.")
 
 print("\n--- El cargado de Dataset ha finalizado ---")
+

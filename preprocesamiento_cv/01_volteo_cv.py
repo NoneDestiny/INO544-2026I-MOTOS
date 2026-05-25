@@ -1,10 +1,11 @@
 import cv2
 import os
-
+# En este script se muestra cómo aplicar el Data Augmentation de Volteo Horizontal a una imagen específica del dataset usando OpenCV.
 directorio_script = os.path.dirname(os.path.abspath(__file__))
+# Se le indica la imagen específica que se desea cargar, en este caso "moto_001.jpg" dentro de la carpeta "dataset_motos" que está al mismo nivel que este script.
 
 ruta_imagen = os.path.join(directorio_script, "dataset_motos", "moto_001.jpg")
-
+# Se muestra la ruta para confirmar que es correcta, si la ruta es incorrecta, el programa no encontrará la imagen y mostrará un error.
 print(f"Buscando imagen en:{ruta_imagen}")
 
 # 1. Leer la imagen. 
