@@ -8,16 +8,18 @@ from PIL import Image
 # ---------------------------------------------------------------------------
 # PALETA DE COLORES
 # ---------------------------------------------------------------------------
-COLOR_BG          = "#0f1117"   # Fondo principal, negro azulado profundo
-COLOR_PANEL       = "#1a1d27"   # Fondo de paneles
-COLOR_PANEL_BORDE = "#252836"   # Borde sutil de paneles
-COLOR_ACENTO      = "#6c63ff"   # Violeta/índigo — color de acento principal
-COLOR_ACENTO_HOV  = "#574fd6"   # Acento al hacer hover
-COLOR_TEXTO       = "#e8e8f0"   # Texto principal
-COLOR_TEXTO_SUB   = "#6b7280"   # Texto secundario / subtítulos
-COLOR_VERDE       = "#22c55e"   # Resultado positivo
-COLOR_ROJO        = "#ef4444"   # Resultado negativo
-COLOR_SEPARADOR   = "#2a2d3e"   # Línea separadora entre paneles
+COLOR_BG          = ("#f8fafc", "#0f1117")   # Fondo principal: Slate-50 / Negro azulado profundo
+COLOR_PANEL       = ("#ffffff", "#1a1d27")   # Fondo de paneles: Blanco / Panel oscuro
+COLOR_PANEL_BORDE = ("#e2e8f0", "#252836")   # Borde: Slate-200 / Borde oscuro
+COLOR_ACENTO      = ("#4f46e5", "#6c63ff")   # Violeta: Indigo-600 / Violeta claro
+COLOR_ACENTO_HOV  = ("#4338ca", "#574fd6")   # Violeta hover: Indigo-700 / Violeta hover oscuro
+COLOR_TEXTO       = ("#0f172a", "#e8e8f0")   # Texto principal: Slate-900 / Blanco grisáceo
+COLOR_TEXTO_SUB   = ("#64748b", "#6b7280")   # Texto secundario: Slate-500 / Gris
+COLOR_VERDE       = ("#16a34a", "#22c55e")   # Resultado positivo: Green-600 / Green-500
+COLOR_ROJO        = ("#dc2626", "#ef4444")   # Resultado negativo: Red-600 / Red-500
+COLOR_SEPARADOR   = ("#cbd5e1", "#2a2d3e")   # Línea separadora: Slate-300 / Separador oscuro
+COLOR_SALIR_BG    = ("#f1f5f9", "#2a2d3e")   # Botón cerrar: Gris claro / Gris oscuro
+COLOR_SALIR_HOV   = ("#e2e8f0", "#3a3d50")   # Botón cerrar hover: Gris / Gris más claro
 
 # ---------------------------------------------------------------------------
 # FUENTES
@@ -67,6 +69,7 @@ class DetectorMotosApp(ctk.CTk):
         cabecera = ctk.CTkFrame(self, fg_color="transparent")
         cabecera.grid(row=0, column=0, columnspan=5, sticky="ew", pady=(24, 14), padx=28)
         cabecera.grid_columnconfigure(0, weight=1)
+        cabecera.grid_columnconfigure(1, weight=0)
 
         ctk.CTkLabel(
             cabecera,
@@ -83,6 +86,18 @@ class DetectorMotosApp(ctk.CTk):
             text_color=COLOR_TEXTO_SUB,
             anchor="w"
         ).grid(row=1, column=0, sticky="w", pady=(2, 0))
+
+        # Switch de selección de tema (Claro / Oscuro)
+        self.switch_tema = ctk.CTkSwitch(
+            cabecera,
+            text="Modo Oscuro",
+            command=self.toggle_tema,
+            font=ctk.CTkFont(family="Segoe UI", size=13),
+            text_color=COLOR_TEXTO,
+            progress_color=COLOR_ACENTO
+        )
+        self.switch_tema.grid(row=0, column=1, rowspan=2, sticky="e", padx=10)
+        self.switch_tema.deselect() # Comienza desactivado (Modo Oscuro por defecto)
 
         # Línea separadora horizontal bajo la cabecera
         sep_h = ctk.CTkFrame(self, height=1, fg_color=COLOR_SEPARADOR)
@@ -253,8 +268,8 @@ class DetectorMotosApp(ctk.CTk):
             pie,
             text="Cerrar Aplicación",
             command=self.on_closing,
-            fg_color="#2a2d3e",
-            hover_color="#3a3d50",
+            fg_color=COLOR_SALIR_BG,
+            hover_color=COLOR_SALIR_HOV,
             text_color=COLOR_ROJO,
             font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
             corner_radius=8,
@@ -270,6 +285,17 @@ class DetectorMotosApp(ctk.CTk):
         # =====================================================================
         self.cap = cv2.VideoCapture(0)
         self.actualizar_video()
+
+    # -------------------------------------------------------------------------
+    # TEMA CLARO / OSCURO
+    # -------------------------------------------------------------------------
+    def toggle_tema(self):
+        if self.switch_tema.get() == 1:
+            ctk.set_appearance_mode("light")
+            self.switch_tema.configure(text="Modo Claro")
+        else:
+            ctk.set_appearance_mode("dark")
+            self.switch_tema.configure(text="Modo Oscuro")
 
     # -------------------------------------------------------------------------
     # LÓGICA DE IA (reutilizable)
